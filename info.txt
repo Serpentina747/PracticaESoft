@@ -1,7 +1,12 @@
+GIRONA	77423
+LLAGOSTERA	71334
+#
 JOSEP	ELMILLOR	4564
 ANGLADA	ELPITJOR	4112
+#
 SERGEY	LESTRICTE	3897
 ARNAU	ELTXINO		7842
+#
 LEO 	MESSIN		5555	esquerra	190	80	exterior esquerra
 ANDRES	ANSUFATI	4242	dreta		192	81	lateral esquerra
 ELQUE	CRIDA		3111	dreta		191	82	central esquerra
@@ -14,7 +19,6 @@ ELQUE	VOLJUGAR	4661	dreta		210	88	lateral esquerra
 ELQUE	VOLPLEGAR	9999	dreta		200	66	central esquerra
 SOC	SUPERBO		8888	dreta		200	66	central dret
 CHRIS	RONALDU		8124	dreta		200	66	porter
-
 GRIS	MOLTGRIS	5555	esquerra	190	80	exterior esquerra
 TEODOR	GUANTANAMO	4242	dreta		192	81	lateral esquerra
 ELPI	LOTES		3111	dreta		191	82	central
