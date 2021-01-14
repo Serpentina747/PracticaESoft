@@ -19,10 +19,12 @@ public class Entrenador extends Persona{
 		instruccions.add(instr);
     }
     public void rebreInstruccio(Instruccio instr){
-
+		System.out.println(instr.missatge());
+		instruccions.add(instr);
     }
     public void assignarRol(Instruccio instr){
-
+		partit.assignarRolJugador(instr);
+		instruccions.add(instr);
     }
     public void enviarMissatgeJugadors(Instruccio instr){
 		partit.missatgeJugadors(instr);
