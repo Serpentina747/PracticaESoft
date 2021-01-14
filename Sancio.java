@@ -1,4 +1,4 @@
-public class Sancio {
+public class Sancio extends Instruccio{
     private Jugador jugadorPista;
     private String tipusSancio;
 

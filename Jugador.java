@@ -19,6 +19,27 @@ public class Jugador extends Persona{
     private boolean banqueta;
     private Vector<Instruccio> msgEntrenador;
 
+    public Jugador(String _nom, String _cognom, int _llicencia_federativa, String _estil, double _alcada, double _pes, Equip _equip, Entrenador _entrenador, String descripcio_rol, boolean _banqueta){
+        super.nom = _nom;
+        super.cognom = _cognom;
+        super.llicencia_federativa = _llicencia_federativa;
+        estil = _estil;
+        alcada = _alcada;
+        pes = _pes;
+        equip = _equip;
+        velocitat = 0;
+        orientacio = 0;
+        acceleracio = 0;
+        amonestat = 0;
+        rol = null;
+        entrenador = _entrenador;
+        nExclusions = 0;
+        veuPilota = false;
+        pendentEntrenador = true;
+        pendentArbitre = true;
+        banqueta = _banqueta;
+        msgEntrenador = new Vector<Instruccio>();
+    }
     public void rebreMissatge (Instruccio instruccio) {
 
         msgEntrenador.add(instruccio);
@@ -28,13 +49,13 @@ public class Jugador extends Persona{
 
     public int excloure() {
 
-        exclusions++;
-        return exclusions;
+        nExclusions++;
+        return nExclusions;
 
     }
 
-    public int exclosions () {
-        return exclusions;
+    public int exclusions () {
+        return nExclusions;
     }
 
     public void enviarPista () {
@@ -55,9 +76,9 @@ public class Jugador extends Persona{
 
     }
 
-    public void canviarRol (Instruccio instruccio) {
+    public void canviarRol (Assignacio assignacio) {
 
-        rol = instruccio.nouRol();
+        rol = assignacio.nouRol();
 
     }
 

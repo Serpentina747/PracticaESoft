@@ -1,4 +1,4 @@
-public class Canvi {
+public class Canvi extends Instruccio{
     private Jugador jugadorPista;
     private Jugador jugadorBanqueta;
 

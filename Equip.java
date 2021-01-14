@@ -39,7 +39,7 @@ public class Equip {
 
     @Override
     public String toString(){
-        return String.valueOf(codi) + "   " + nom;
+        return String.valueOf(codi) + "   " + nom + " ";
     }
 
 }

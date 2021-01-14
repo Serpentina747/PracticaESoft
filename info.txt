@@ -7,27 +7,30 @@ ANGLADA	ELPITJOR	4112
 SERGEY	LESTRICTE	3897
 ARNAU	ELTXINO		7842
 #
-LEO 	MESSIN		5555	esquerra	190	80	exterior esquerra
-ANDRES	ANSUFATI	4242	dreta		192	81	lateral esquerra
-ELQUE	CRIDA		3111	dreta		191	82	central esquerra
-TOMAS	BISLOU		5481	dreta		182	83	central dret
-ELSA	GADES		6427	esquerra	162	92	lateral dret
-ZINEDIN	ZIDAN		6122	dreta		177	75	exterior dret
-POL	SARIS		3894	dreta		200	66	porter
-EDUARD	LOPEZ		4778	esquerra	200	69	exterior esquerra
-ELQUE	VOLJUGAR	4661	dreta		210	88	lateral esquerra
-ELQUE	VOLPLEGAR	9999	dreta		200	66	central esquerra
-SOC	SUPERBO		8888	dreta		200	66	central dret
+LEO 	MESSIN		5555	esquerra	190	80	exterior_esquerra
+ANDRES	ANSUFATI	4242	dreta		192	81	lateral_esquerra
+ELQUE	CRIDA		3111	dreta		191	82	central_esquerra
+TOMAS	BISLOU		5481	dreta		182	83	central_dret
+ELSA	GADES		6427	esquerra	162	92	lateral_dret
+ZINEDIN	ZIDAN		6122	dreta		177	75	exterior_dret
+POL
+#	SARIS		3894	dreta		200	66	porter
+EDUARD	LOPEZ		4778	esquerra	200	69	exterior_esquerra
+ELQUE	VOLJUGAR	4661	dreta		210	88	lateral_esquerra
+ELQUE	VOLPLEGAR	9999	dreta		200	66	central_esquerra
+SOC	SUPERBO		8888	dreta		200	66	central_dret
 CHRIS	RONALDU		8124	dreta		200	66	porter
-GRIS	MOLTGRIS	5555	esquerra	190	80	exterior esquerra
-TEODOR	GUANTANAMO	4242	dreta		192	81	lateral esquerra
+#
+GRIS	MOLTGRIS	5555	esquerra	190	80	exterior_esquerra
+TEODOR	GUANTANAMO	4242	dreta		192	81	lateral_esquerra
 ELPI	LOTES		3111	dreta		191	82	central
-HOSTIA	PILOTES		5481	dreta		182	83	lateral	dret
-ELFER	NANDEZ		6427	esquerra	162	92	exterior dret
+HOSTIA	PILOTES		5481	dreta		182	83	lateral_dret
+ELFER	NANDEZ		6427	esquerra	162	92	exterior_dret
 ESTIC	JUGANT		6122	dreta		177	75	pivot
 GRAN	JUGADOR		3894	dreta		200	66	porter
-MILLOR	PERSONA		4778	esquerra	200	69	exterior esquerra
-ELQUE	NOJUGA		4661	dreta		210	88	lateral esquerra
+#
+MILLOR	PERSONA		4778	esquerra	200	69	exterior_esquerra
+ELQUE	NOJUGA		4661	dreta		210	88	lateral_esquerra
 SOCUN	RATPANAT	9999	dreta		200	66	central
-ETSUN	FIGAFLO		8888	dreta		200	66	lateral	dret
+ETSUN	FIGAFLO		8888	dreta		200	66	lateral_dret
 SIMPA	TIC		8124	dreta		200	66	porter

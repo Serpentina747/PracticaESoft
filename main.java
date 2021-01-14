@@ -7,17 +7,17 @@ class Handbol{
 
     public static void main(String args[]){
         Vector<Equip> equips = new Vector<Equip>();
-        Vector<Jugador> jugadorsEquip1 = new Vector<Jugador>();
-        Vector<Jugador> jugadorsEquip1Banqueta = new Vector<Jugador>();
-        Vector<Jugador> jugadorsEquip2 = new Vector<Jugador>();
-        Vector<Jugador> jugadorsEquip2Banqueta = new Vector<Jugador>();
-        Vector<Arbitre> arbitres = new Vector<Arbitre>();
-        Vector<Entrenador> entrenadors = new Vector<Entrenador>();
+        Vector<Persona> jugadorsEquipLocalPista = new Vector<Persona>();
+        Vector<Persona> jugadorsEquipLocalBanqueta = new Vector<Persona>();
+        Vector<Persona> jugadorsEquipVisitantPista = new Vector<Persona>();
+        Vector<Persona> jugadorsEquipVisitantBanqueta = new Vector<Persona>();
+        Vector<Persona> arbitres = new Vector<Persona>();
+        Vector<Persona> entrenadors = new Vector<Persona>();
 
         int pet;
         Scanner sc = new Scanner(System.in);
         System.out.println("APLICACIO DEL PARTIT D'HANDBOL");
-        llegirDades(equips, jugadorsEquip1, jugadorsEquip1Banqueta, jugadorsEquip2, jugadorsEquip2Banqueta, arbitres, entrenadors);
+        llegirDades(equips, jugadorsEquipLocalPista, jugadorsEquipLocalBanqueta, jugadorsEquipVisitantPista, jugadorsEquipVisitantBanqueta, arbitres, entrenadors);
         mostrarOpcions();
         while((pet = rebreOpcio(sc)) != 0){
             switch (pet) {
@@ -52,14 +52,25 @@ class Handbol{
         int t  = sc.nextInt();
         return t;
     }
-    public static void llegirDades(Vector<Equip> equips, Vector<Jugador> jugadorsEquip1, Vector<Jugador> jugadorsEquip1Banqueta,
-                    Vector<Jugador> jugadorsEquip2, Vector<Jugador> jugadorsEquip2Banqueta, Vector<Arbitre> arbitres,
-                        Vector<Entrenador> entrenadors){
+    public static void llegirDades(Vector<Equip> equips, Vector<Persona> jugadorsEquipLocalPista, Vector<Persona> jugadorsEquipLocalBanqueta,
+                    Vector<Persona> jugadorsEquipVisitantPista, Vector<Persona> jugadorsEquipVisitantBanqueta, Vector<Persona> arbitres,
+                        Vector<Persona> entrenadors){
             try{
                 File myObj = new File("info.txt");
                 Scanner myReader = new Scanner(myObj);
                 llegirEquips(equips, myReader);
-                /*llegirArbitres(arbitres, myReader);*/
+                llegirArbitres(arbitres, myReader);
+                llegirEntrenadors(entrenadors, myReader, equips.get(0), equips.get(1));
+                System.out.println(equips.get(0));
+                System.out.println(equips.get(1));
+                System.out.println(arbitres.get(0));
+                System.out.println(arbitres.get(1));
+                System.out.println(entrenadors.get(0));
+                System.out.println(entrenadors.get(1));
+                /*llegirJugadors(jugadorsEquipLocalPista, myReader, false, equips.get(0));
+                llegirJugadors(jugadorsEquipLocalBanqueta, myReader, true, equips.get(0));
+                llegirJugadors(jugadorsEquipVisitantPista, myReader, false, equips.get(1));
+                llegirJugadors(jugadorsEquipVisitantBanqueta, myReader, true, equips.get(1));*/
             } catch (FileNotFoundException e) {
                 System.out.println("An error occurred.");
                 e.printStackTrace();
@@ -96,9 +107,8 @@ class Handbol{
                     break;
             }
         }
-        myReader.close();
     }
-    public static void llegirArbitres(Vector<Arbitre> arbitres, Scanner myReader){
+    public static void llegirArbitres(Vector<Persona> arbitres, Scanner myReader){
         int i = 0;
         String nom = "";
         String cognom = "";
@@ -121,12 +131,99 @@ class Handbol{
                     i++;
                     break;
                 case 3:
-                    /*Arbitre a = new Persona(nom, cognom, Integer.parseInt(codi));
+                    Persona a = new Arbitre(nom, cognom, Integer.parseInt(codi));
                     arbitres.add(a);
                     data = myReader.next();
                     i = 0;
-                    break;*/
+                    break;
             }
         }
     }
+    public static void llegirEntrenadors(Vector<Persona> entrenadors, Scanner myReader, Equip local, Equip visitant){
+        int i = 0;
+        int aux = 0;
+        String nom = "";
+        String cognom = "";
+        String codi = "";
+        String data = myReader.next();
+        while (!data.equals("#")) {
+            switch(i){
+                case 0:
+                    nom = data;
+                    data = myReader.next();
+                    i++;
+                    break;
+                case 1:
+                    cognom = data;
+                    data = myReader.next();
+                    i++;
+                    break;
+                case 2:
+                    codi = data;
+                    i++;
+                    break;
+                case 3:
+                    Persona a = null;
+                    if(aux == 0){
+                        a = new Entrenador(nom, cognom, Integer.parseInt(codi), local);
+                        aux = 1;
+                    } else {
+                        a = new Entrenador(nom, cognom, Integer.parseInt(codi), visitant);
+                    }
+                    entrenadors.add(a);
+                    data = myReader.next();
+                    i = 0;
+                    break;
+            }
+        }
+    }
+    /*public static void llegirJugadors(Vector<Persona> jugadors, Scanner myReader, boolean banqueta, Entrenador entrenador, Equip equip){
+        int i = 0;
+        String nom, cognom, codi, estil, alcada, pes, descripcio_rol = "";
+        String data = myReader.next();
+        while (!data.equals("#")) {
+            switch(i){
+                case 0:
+                    nom = data;
+                    data = myReader.next();
+                    i++;
+                    break;
+                case 1:
+                    cognom = data;
+                    data = myReader.next();
+                    i++;
+                    break;
+                case 2:
+                    codi = data;
+                    i++;
+                    break;
+                case 3:
+                    estil = data;
+                    data = myReader.next();
+                    i++;
+                    break;
+                case 4:
+                    alcada = data;
+                    data = myReader.next();
+                    i++;
+                    break;
+                case 5:
+                    pes = data;
+                    data = myReader.next();
+                    i++;
+                    break;
+                case 6:
+                    descripcio_rol = data;
+                    data = myReader.next();
+                    i++;
+                    break;
+                case 7:
+                    Persona j = new Jugador(nom, cognom, Integer.parseInt(codi), estil, alcada, pes, equip, entrenador, descripcio_rol, banqueta);
+                    jugadors.add(j);
+                    data = myReader.next();
+                    i = 0;
+                    break;
+            }
+        }
+    }*/
  }
