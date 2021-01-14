@@ -1,4 +1,4 @@
-public class Arbitre {
+public class Arbitre extends Persona{
     public void excloure(Instruccio instr){
 
     }

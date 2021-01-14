@@ -1,13 +1,15 @@
 import java.util.Scanner;
-
+import java.io.File;  // Import the File class
+import java.io.FileNotFoundException;  // Import this class to handle errors
+import java.util.Scanner; // Import the Scanner class to read text files
 class Handbol{
 
     public static void main(String args[]){
         int pet;
         Scanner sc = new Scanner(System.in);
         System.out.printf("APLICACIO DEL PARTIT D'HANDBOL\n");
+        mostrarOpcions();
         while((pet = rebreOpcio(sc)) != 0){
-            mostrarOpcions();
             switch (pet) {
                 case 0:
                     break;
@@ -23,6 +25,7 @@ class Handbol{
                 default:
                     System.out.printf("SI ET PLAU, INTRODUEIX UNA OPCIO VALIDA :-) \n");
             }
+            mostrarOpcions();
         }
         System.out.printf("TANCADA LA APLICACIO, VAGI BE!");
 
