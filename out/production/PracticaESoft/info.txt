@@ -13,7 +13,7 @@ ELQUE	CRIDA		3111	dreta		191	82	central_esquerra
 TOMAS	BISLOU		5481	dreta		182	83	central_dret
 ELSA	GADES		6427	esquerra	162	92	lateral_dret
 ZINEDIN	ZIDAN		6122	dreta		177	75	exterior_dret
-POL	SARIS		3894	dreta		200	66	porter 	
+POL	SARIS		3894	dreta		200	66	porter
 #
 EDUARD	LOPEZ		4778	esquerra	200	69	exterior_esquerra
 ELQUE	VOLJUGAR	4661	dreta		210	88	lateral_esquerra
@@ -32,5 +32,6 @@ GRAN	JUGADOR		3894	dreta		200	66	porter
 MILLOR	PERSONA		4778	esquerra	200	69	exterior_esquerra
 ELQUE	NOJUGA		4661	dreta		210	88	lateral_esquerra
 SOCUN	RATPANAT	9999	dreta		200	66	central
-ETSUN	FIGAFLO		8888	dreta		200	66	lateral_dret
+ETSUN	FIGAFLO		8288	dreta		200	66	lateral_dret
 SIMPA	TIC		8124	dreta		200	66	porter
+#

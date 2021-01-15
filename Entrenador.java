@@ -11,8 +11,8 @@ public class Entrenador extends Persona{
         super.llicencia_federativa = _llicencia_federativa;
         super.partit = _partit;
         equip=eq;
-		    instruccions = new Vector<Instruccio>();
-		    pendentArbitre=false;
+        instruccions = new Vector<Instruccio>();
+        pendentArbitre=false;
 	}
 	
     public void canviarJugador(Canvi canv){
@@ -29,7 +29,8 @@ public class Entrenador extends Persona{
 		instruccions.add(assig);
     }
     public void enviarMissatgeJugadors(Instruccio instr){
-		partit.missatgeJugadors(instr);
+		if (super.partit.missatgeJugadors(instr) == -1) System.out.println("NULL");
+		else System.out.println("EMPTY");
 		instruccions.add(instr);
     }
     public Equip equip(){

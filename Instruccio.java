@@ -8,7 +8,7 @@ public class Instruccio {
     protected String llocRebuda;
     protected char CoV;
 
-
+    public Instruccio(){}
     public Instruccio(int codi, Persona e, Vector<Jugador> recept, String miss, String llocReb, char cOv)
     {
         codiInstruccio = codi;

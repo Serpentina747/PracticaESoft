@@ -42,6 +42,7 @@ public class Partit{
     //Retorna 1 va bé, 0 si no s'envia a ningú i -1 si la llista és null
     public int missatgeJugadors(Instruccio ins)
     {
+        System.out.println("ENTRO A MISSATGEJUGADORS PARTIT");
         Vector<Jugador> receptors = null;
         switch (ins.llocRebuda()) {
             case "banqueta":
@@ -57,6 +58,7 @@ public class Partit{
         if (receptors == null ) return -1;
         else if (receptors.isEmpty()) return 0;
         else {
+            System.out.println("Entro a j.rebreMissatge de PARTIT");
             for (Jugador j : receptors) j.rebreMissatge(ins);
             return 1;
         }
@@ -124,14 +126,17 @@ public class Partit{
     {
         for (Jugador j: assig.receptors()) j.canviarRol(assig);
     }
+
     public void entrarEquips(Equip local, Equip visitant){
         _equipCasa = local;
         _equipVisitant = visitant;
     }
+
     public void entrarArbitres(Arbitre arbitre_1, Arbitre arbitre_2){
         _arbitre1 = arbitre_1;
         _arbitre2 = arbitre_2;
     }
+
     public void entrarJugadors(Vector<Jugador> jugadors, String pistaObanqueta, String localOvisitant){
         if(pistaObanqueta.equals("banqueta")){
             if(localOvisitant.equals("local")){
@@ -147,6 +152,7 @@ public class Partit{
             }
         }
     }
+
     public Vector<Jugador> jugadorsEquipLocalBanqueta(){
         return _banquetaCasa;
     }

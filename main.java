@@ -45,6 +45,13 @@ class Handbol{
         System.out.println("TANCADA LA APLICACIO, VAGI BE!");
 
     }
+
+
+
+
+
+
+
     public static void mostrarOpcions(){
         System.out.println("+--------------------------------------------------+");
         System.out.println("| (1) ENVIAR MISSATGE ALS JUGADORS DE LA BANQUETA  |");
@@ -52,11 +59,21 @@ class Handbol{
         System.out.println("| (3) FER CANVI DE JUGADORS                        |");
         System.out.println("| (0) TANCAR APLICACIO                             |");
         System.out.println("+-------------------------------------------------+|");
+        System.out.print("Opcio: ");
     }
+
+
+
+
     public static int rebreOpcio(Scanner sc){
         int t  = sc.nextInt();
         return t;
     }
+
+
+
+
+
     public static void llegirDades(Vector<Equip> equips, Vector<Jugador> jugadorsEquipLocalPista, Vector<Jugador> jugadorsEquipLocalBanqueta,
                     Vector<Jugador> jugadorsEquipVisitantPista, Vector<Jugador> jugadorsEquipVisitantBanqueta, Vector<Arbitre> arbitres,
                         Vector<Entrenador> entrenadors, Partit partit){
@@ -87,15 +104,25 @@ class Handbol{
                 partit.entrarJugadors(jugadorsEquipVisitantPista, "visitant", "pista");
                 partit.entrarJugadors(jugadorsEquipVisitantBanqueta, "visitant", "banqueta");
 
+
+
             } catch (FileNotFoundException e) {
                 System.out.println("An error occurred.");
                 e.printStackTrace();
             }
     }
+
+
+
+
+
+
     public static int enviarMissatgeJugadorsBanqueta(Scanner sc, Vector<Equip> equips, Vector<Entrenador> entrenadors, Partit partit){
         Entrenador e = null;
         String nomEquip , msg;
-        System.out.printf("IDENTIFICA EQUIP: ");
+        System.out.println("Esculli l'euip en el qual vol enviar el missatge a la banqueta: ");
+        System.out.println(equips.get(0) + " (Local)");
+        System.out.println(equips.get(1) + " (Visitant)");
         nomEquip =  sc.next();
         System.out.printf("MISSATGE A TRANSMETRE: ");
         msg =  sc.next();
@@ -111,6 +138,12 @@ class Handbol{
         return 1;
         
     }
+
+
+
+
+
+
     //Primer equip=local, segon=visitant
     public static void llegirEquips(Vector<Equip> equips, Scanner myReader, Partit partit){
         int i = 0;
@@ -137,6 +170,13 @@ class Handbol{
             }
         }
     }
+
+
+
+
+
+
+
     public static void llegirArbitres(Vector<Arbitre> arbitres, Scanner myReader, Partit partit){
         int i = 0;
         String nom = "";
@@ -168,6 +208,12 @@ class Handbol{
             }
         }
     }
+
+
+
+
+
+
     public static void llegirEntrenadors(Vector<Entrenador> entrenadors, Scanner myReader, Equip local, Equip visitant, Partit partit){
         int i = 0;
         int aux = 0;
@@ -206,6 +252,13 @@ class Handbol{
             }
         }
     }
+
+
+
+
+
+
+
     public static void llegirJugadors(Vector<Jugador> jugadors, Scanner myReader, boolean banqueta, Entrenador entrenador, Equip equip, String atacODefensa, Partit partit){
         int i = 0;
         String nom="", cognom="", codi="", estil="", alcada="", pes="", descripcio_rol = "";
