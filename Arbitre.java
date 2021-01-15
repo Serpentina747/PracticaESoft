@@ -19,6 +19,6 @@ public class Arbitre extends Persona{
 	}
 	@Override
 	public String toString(){
-		return super.nom + " " + super.cognom + " " + super.llicencia_federativa + " ";
+		return " NOM: " + super.nom + " COGNON: " + super.cognom + " LLICENCIA FEDERATIVA: " + super.llicencia_federativa + " ";
 	}
 }

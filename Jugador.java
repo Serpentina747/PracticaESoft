@@ -45,7 +45,7 @@ public class Jugador extends Persona{
     public void rebreMissatge (Instruccio instruccio) {
 
         msgEntrenador.add(instruccio);
-        System.out.println("Missatge rebut de l'entreandor: " + instruccio.missatge() + "\n");
+        System.out.println(" JUGADOR: " + super.nom + " COGNOM: " + super.cognom + " TEXT REBUT: " + instruccio.missatge());
 
     }
 

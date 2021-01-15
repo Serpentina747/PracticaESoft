@@ -48,17 +48,17 @@ public class Equip {
     }
 
     public String nom() {return nom;}
-
+    public int nombreJugadors() {return nombreJugadors;}
     public void afageixPersonal(Vector<Jugador> _jugadorsP, Vector<Jugador> _jugadorsB, Entrenador e) {
         entrenador = e;
         Jugadors = new Vector<Jugador>();
         Jugadors.addAll(_jugadorsP);
         Jugadors.addAll(_jugadorsB);
+        nombreJugadors = _jugadorsP.size() + _jugadorsB.size();
     }
-
     @Override
     public String toString(){
-        return String.valueOf(codi) + "   " + nom + " ";
+        return " CODI EQUIP: " + String.valueOf(codi) + " NOM: " + nom + " ";
     }
 
 }

@@ -16,26 +16,26 @@ class Handbol{
         Vector<Arbitre> arbitres = new Vector<Arbitre>();
         Vector<Entrenador> entrenadors = new Vector<Entrenador>();
 
-        int pet;
+        String pet;
         Scanner sc = new Scanner(System.in);
         System.out.println("APLICACIO DEL PARTIT D'HANDBOL");
         llegirDades(equips, jugadorsEquipLocalPista, jugadorsEquipLocalBanqueta, 
             jugadorsEquipVisitantPista, jugadorsEquipVisitantBanqueta, arbitres, entrenadors, partit);
         mostrarOpcions();
-        while((pet = rebreOpcio(sc)) != 0){
+        while(!(pet = rebreOpcio(sc)).equals("0")){
             switch (pet) {
-                case 0:
+                case "0":
                     break;
-                case 1:
+                case "1":
                     if(enviarMissatgeJugadorsBanqueta(sc, equips, entrenadors, partit) == -1){
                         System.out.println("AQUEST EQUIP NO PARTICIPA EN EL PARTIT");
                     }
                     break;
             
-                case 2:
+                case "2":
                     break;
 
-                case 3:
+                case "3":
                     break;
                 default:
                     System.out.println("SI ET PLAU, INTRODUEIX UNA OPCIO VALIDA :-)");
@@ -65,8 +65,8 @@ class Handbol{
 
 
 
-    public static int rebreOpcio(Scanner sc){
-        int t  = sc.nextInt();
+    public static String rebreOpcio(Scanner sc){
+        String t  = sc.nextLine();
         return t;
     }
 
@@ -83,26 +83,22 @@ class Handbol{
                 llegirEquips(equips, myReader, partit);
                 llegirArbitres(arbitres, myReader, partit);
                 llegirEntrenadors(entrenadors, myReader, equips.get(0), equips.get(1), partit);
-                System.out.println(equips.get(0));
-                System.out.println(equips.get(1));
-                System.out.println(arbitres.get(0));
-                System.out.println(arbitres.get(1));
-                System.out.println(entrenadors.get(0));
-                System.out.println(entrenadors.get(1));
+
                 llegirJugadors(jugadorsEquipLocalPista, myReader, false, entrenadors.get(0),equips.get(0), "D", partit);
                 llegirJugadors(jugadorsEquipLocalBanqueta, myReader, true, entrenadors.get(0),equips.get(0), "D", partit);
                 llegirJugadors(jugadorsEquipVisitantPista, myReader, false, entrenadors.get(1),equips.get(1), "A", partit);
                 llegirJugadors(jugadorsEquipVisitantBanqueta, myReader, true, entrenadors.get(1),equips.get(1), "A", partit);
-
+                
                 equips.get(0).afageixPersonal(jugadorsEquipLocalPista, jugadorsEquipLocalBanqueta, entrenadors.get(0));
                 equips.get(1).afageixPersonal(jugadorsEquipVisitantPista, jugadorsEquipVisitantBanqueta, entrenadors.get(1));
-
+               
                 partit.entrarEquips(equips.get(0), equips.get(1));
                 partit.entrarArbitres(arbitres.get(0), arbitres.get(1));
-                partit.entrarJugadors(jugadorsEquipLocalPista, "local", "pista");
-                partit.entrarJugadors(jugadorsEquipLocalBanqueta, "local", "banqueta");
-                partit.entrarJugadors(jugadorsEquipVisitantPista, "visitant", "pista");
-                partit.entrarJugadors(jugadorsEquipVisitantBanqueta, "visitant", "banqueta");
+
+                partit.entrarJugadors(jugadorsEquipLocalPista, "pista", "local");
+                partit.entrarJugadors(jugadorsEquipLocalBanqueta, "banqueta", "local");
+                partit.entrarJugadors(jugadorsEquipVisitantPista, "pista", "visitant");
+                partit.entrarJugadors(jugadorsEquipVisitantBanqueta, "banqueta", "visitant");
 
 
 
@@ -120,12 +116,12 @@ class Handbol{
     public static int enviarMissatgeJugadorsBanqueta(Scanner sc, Vector<Equip> equips, Vector<Entrenador> entrenadors, Partit partit){
         Entrenador e = null;
         String nomEquip , msg;
-        System.out.println("Esculli l'euip en el qual vol enviar el missatge a la banqueta: ");
+        System.out.println("Esculli l'equip en el qual vols enviar el missatge a la banqueta: ");
         System.out.println(equips.get(0) + " (Local)");
         System.out.println(equips.get(1) + " (Visitant)");
-        nomEquip =  sc.next();
+        nomEquip =  sc.nextLine();
         System.out.printf("MISSATGE A TRANSMETRE: ");
-        msg =  sc.next();
+        msg =  sc.nextLine();
         Instruccio instr = null;
         if(entrenadors.get(0).equip().nomEquip().equals(nomEquip)){
             e = entrenadors.get(0);
@@ -143,8 +139,6 @@ class Handbol{
 
 
 
-
-    //Primer equip=local, segon=visitant
     public static void llegirEquips(Vector<Equip> equips, Scanner myReader, Partit partit){
         int i = 0;
         String nomEquip = "";

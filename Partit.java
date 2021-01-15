@@ -42,7 +42,6 @@ public class Partit{
     //Retorna 1 va bé, 0 si no s'envia a ningú i -1 si la llista és null
     public int missatgeJugadors(Instruccio ins)
     {
-        System.out.println("ENTRO A MISSATGEJUGADORS PARTIT");
         Vector<Jugador> receptors = null;
         switch (ins.llocRebuda()) {
             case "banqueta":
@@ -56,9 +55,8 @@ public class Partit{
         }
 
         if (receptors == null ) return -1;
-        else if (receptors.isEmpty()) return 0;
+        else if (receptors.isEmpty()) return -1;
         else {
-            System.out.println("Entro a j.rebreMissatge de PARTIT");
             for (Jugador j : receptors) j.rebreMissatge(ins);
             return 1;
         }
@@ -164,5 +162,17 @@ public class Partit{
     }
     public Vector<Jugador> jugadorsEquipVisitantPista(){
         return _pistaVisitant;
+    }
+    public Equip equipLocal(){
+        return _equipCasa;
+    }
+    public Equip equipVisitant(){
+        return _equipVisitant;
+    }
+    public Arbitre arbitre1(){
+        return _arbitre1;
+    }
+    public Arbitre arbitre2(){
+        return _arbitre2;
     }
 }
