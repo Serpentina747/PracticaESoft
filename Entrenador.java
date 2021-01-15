@@ -2,15 +2,17 @@ import java.util.*;
 public class Entrenador extends Persona{
     private boolean pendentArbitre;
     private Equip equip;
+    private Partit partit;
     private Vector<Instruccio> instruccions;
 
-	public Entrenador(String _nom, String _cognom, int _llicencia_federativa, Equip eq) {
+	public Entrenador(String _nom, String _cognom, int _llicencia_federativa, Equip eq, Partit _partit) {
         super.nom = _nom;
         super.cognom = _cognom;
         super.llicencia_federativa = _llicencia_federativa;
-		equip=eq;
-		instruccions = new Vector<Instruccio>();
-		pendentArbitre=false;
+        super.partit = _partit;
+        equip=eq;
+		    instruccions = new Vector<Instruccio>();
+		    pendentArbitre=false;
 	}
 	
     public void canviarJugador(Canvi canv){
@@ -35,5 +37,9 @@ public class Entrenador extends Persona{
     }
     public boolean pendentArbitre(){
         return pendentArbitre;
+    }
+    @Override
+    public String toString(){
+      return super.nom + " " + super.cognom + " " + super.llicencia_federativa + " " + equip + " ";
     }
 }

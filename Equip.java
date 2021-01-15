@@ -16,14 +16,14 @@ public class Equip {
         this.nombreJugadors = 12;
         Jugadors = new Vector<Jugador>();
     }*/
-    public Equip(int _codi, String _nom, int _nombreJugadors){
+    public Equip(int _codi, String _nom, int _nombreJugadors, Partit _partit){
         codi = _codi;
         nom = _nom;
         nombreJugadors = _nombreJugadors;
         Jugadors = null;
         entrenador = null;
         amonestacions = 0;
-        partit = null;
+        partit = _partit;
         esquemaDef = null;
         esquemaAtac = null;
     }
@@ -58,7 +58,7 @@ public class Equip {
 
     @Override
     public String toString(){
-        return String.valueOf(codi) + "   " + nom;
+        return String.valueOf(codi) + "   " + nom + " ";
     }
 
 }

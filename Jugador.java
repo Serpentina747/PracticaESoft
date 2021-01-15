@@ -12,7 +12,6 @@ public class Jugador extends Persona{
     private int amonestat;
     private Rol rol;
     private Entrenador entrenador;
-    private int nExclusions;
     private boolean veuPilota;
     private boolean pendentEntrenador;
     private boolean pendentArbitre;
@@ -20,10 +19,11 @@ public class Jugador extends Persona{
     private Vector<Instruccio> msgEntrenador;
     private int exclusions;
 
-    public Jugador(String _nom, String _cognom, int _llicencia_federativa, String _estil, double _alcada, double _pes, Equip _equip, Entrenador _entrenador, Rol _rol, boolean _banqueta){
+    public Jugador(String _nom, String _cognom, int _llicencia_federativa, String _estil, double _alcada, double _pes, Equip _equip, Entrenador _entrenador, String descripcio_rol, boolean _banqueta, String atacOdefensa, Partit _partit){
         super.nom = _nom;
         super.cognom = _cognom;
         super.llicencia_federativa = _llicencia_federativa;
+        super.partit = _partit;
         estil = _estil;
         alcada = _alcada;
         pes = _pes;
@@ -32,9 +32,9 @@ public class Jugador extends Persona{
         orientacio = 0;
         acceleracio = 0;
         amonestat = 0;
-        rol = _rol;
+        rol = crearRol(descripcio_rol, atacOdefensa);
         entrenador = _entrenador;
-        nExclusions = 0;
+        exclusions = 0;
         veuPilota = false;
         pendentEntrenador = true;
         pendentArbitre = true;
@@ -85,5 +85,62 @@ public class Jugador extends Persona{
     }
 
     public String nomEquip() {return equip.nomEquip();}
+
+    public Rol crearRol(String descripcio_rol, String atacOdefensa){
+        if(atacOdefensa.equals("D")){
+            if(descripcio_rol.equals("exterior_esquerra")){
+                return new Defensa("exterior", "esquerra");
+
+            } else if (descripcio_rol.equals("lateral_esquerra")){
+                return new Defensa("lateral", "esquerra");
+
+            } else if (descripcio_rol.equals("central_esquerra")){
+                return new Defensa("central", "esquerra");
+                
+            } else if (descripcio_rol.equals("central_dret")){
+                return new Defensa("central", "dret");
+                
+            } else if (descripcio_rol.equals("lateral_dret")){
+                return new Defensa("lateral", "dret");
+                
+            } else if (descripcio_rol.equals("exterior_dret")){
+                return new Defensa("exterior", "dret");
+                
+            } else if (descripcio_rol.equals("porter")){
+                return new Porter("porter", "porter");  
+            }
+        }  else if (atacOdefensa.equals("A")){
+            if(descripcio_rol.equals("exterior_esquerra")){
+                return new Atacant("exterior", "esquerra");
+            } else if (descripcio_rol.equals("lateral_esquerra")){
+                return new Atacant("lateral", "esquerra");
+
+            } else if (descripcio_rol.equals("central")){
+                return new Atacant("central", "central");
+                
+            } else if (descripcio_rol.equals("lateral_dret")){
+                return new Atacant("lateral", "dret");
+                
+            } else if (descripcio_rol.equals("exterior_dret")){
+                return new Atacant("exterior", "dret");
+                
+            } else if (descripcio_rol.equals("pivot")){
+                return new Atacant("pivot", "pivot");
+                
+            } else if (descripcio_rol.equals("porter")){
+                return new Atacant("porter", "porter");
+                
+            }
+        }
+        return null;
+    }
+    @Override public String toString(){
+        String a = "";
+        if(banqueta) {a = "banqueta";}
+        else{a = "pista";}
+        return "NOM: " + super.nom + " COGNOM: " + super.cognom + " LLICENCIA FEDERATIVA: " + 
+        super.llicencia_federativa + " ESTIL: " + estil + " ALCADA: " + alcada + " PES: "  + pes + 
+        " EQUIP: " + equip + " ROL: " + rol + " BANQUETA/PISTA: " + a + " AMONESTACIONS: " + amonestat +  " EXCLUSIONS: " +  exclusions + " "; 
+    }
 
 }

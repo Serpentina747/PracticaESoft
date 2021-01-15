@@ -10,11 +10,11 @@ public class Persona {
         llicencia_federativa = 0;
         partit = null;
     }
-    public Persona(String _nom, String _cognom, int _llicencia_federativa){
+    public Persona(String _nom, String _cognom, int _llicencia_federativa, Partit _partit){
         nom = _nom;
         cognom = _cognom;
         llicencia_federativa = _llicencia_federativa;
-        partit = null;
+        partit = _partit;
     }
     public int llicenciaFederativa(){
         return llicencia_federativa;

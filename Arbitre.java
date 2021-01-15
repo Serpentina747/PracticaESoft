@@ -4,10 +4,11 @@ public class Arbitre extends Persona{
 
 	ArrayList<Instruccio> instruccions;
 
-	public Arbitre(String _nom, String _cognom, int _llicencia_federativa) {
+	public Arbitre(String _nom, String _cognom, int _llicencia_federativa, Partit _partit) {
 		super.nom = _nom;
 		super.cognom = _cognom;
 		super.llicencia_federativa = _llicencia_federativa;
+		super.partit = _partit;
 		instruccions = new ArrayList<Instruccio>();
 	}
 	
@@ -16,5 +17,8 @@ public class Arbitre extends Persona{
 		partit.exclouJugador(sans);
 		instruccions.add(sans);
 	}
-	
+	@Override
+	public String toString(){
+		return super.nom + " " + super.cognom + " " + super.llicencia_federativa + " ";
+	}
 }

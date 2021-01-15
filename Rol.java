@@ -24,4 +24,7 @@ public class Rol {
 		
 		return posicionament;
 	}
+	@Override public String toString(){
+		return codiRol + " " + nomRol + " " + orientacio +  " " + posicionament + " ";
+	}
 }

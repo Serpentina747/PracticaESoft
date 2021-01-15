@@ -7,20 +7,20 @@ public class Partit{
     private Vector<Jugador> _banquetaCasa, _banquetaVisitant, _pistaCasa, _pistaVisitant,
             _jugadorsExclosos, _jugadorsExpulsats;
 
-    /*public Partit()
+    public Partit()
     {
-        _equipCasa = new Equip();
-        _equipVisitant = new Equip();
+        _equipCasa = null;
+        _equipVisitant = null;
         _arbitre1 = null;
         _arbitre2 = null;
-        _banquetaCasa = new Vector<>();
+        _banquetaCasa = new Vector<Jugador>();
         _banquetaVisitant = new Vector<Jugador>();
         _pistaCasa = new Vector<Jugador>();
         _pistaVisitant = new Vector<Jugador>();
         _jugadorsExclosos = new Vector<Jugador>();
         _jugadorsExpulsats = new Vector<Jugador>();
 
-    }*/
+    }
 
     public Partit(Equip eCasa, Equip eVisitant, Arbitre arbitre1, Arbitre arbitre2,
                   Vector<Jugador> banquetaCasa, Vector<Jugador> banquetaVisitant, Vector<Jugador> pistaCasa, Vector<Jugador> pistaVisitant)
@@ -124,5 +124,39 @@ public class Partit{
     {
         for (Jugador j: assig.receptors()) j.canviarRol(assig);
     }
-
+    public void entrarEquips(Equip local, Equip visitant){
+        _equipCasa = local;
+        _equipVisitant = visitant;
+    }
+    public void entrarArbitres(Arbitre arbitre_1, Arbitre arbitre_2){
+        _arbitre1 = arbitre_1;
+        _arbitre2 = arbitre_2;
+    }
+    public void entrarJugadors(Vector<Jugador> jugadors, String pistaObanqueta, String localOvisitant){
+        if(pistaObanqueta.equals("banqueta")){
+            if(localOvisitant.equals("local")){
+                _banquetaCasa.addAll(jugadors);
+            } else if(localOvisitant.equals("visitant")){
+                _banquetaVisitant.addAll(jugadors);
+            }
+        } else if (pistaObanqueta.equals("pista")){
+            if(localOvisitant.equals("local")){
+                _pistaCasa.addAll(jugadors);
+            } else if(localOvisitant.equals("visitant")){
+                _pistaVisitant.addAll(jugadors);
+            }
+        }
+    }
+    public Vector<Jugador> jugadorsEquipLocalBanqueta(){
+        return _banquetaCasa;
+    }
+    public Vector<Jugador> jugadorsEquipLocalPista(){
+        return _pistaCasa;
+    }
+    public Vector<Jugador> jugadorsEquipVisitantBanqueta(){
+        return _banquetaVisitant;
+    }
+    public Vector<Jugador> jugadorsEquipVisitantPista(){
+        return _pistaVisitant;
+    }
 }
