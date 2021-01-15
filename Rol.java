@@ -1,9 +1,9 @@
 public class Rol {
 	
-	int codiRol;
-	String nomRol;
-	String orientacio;
-	String posicionament;
+	protected int codiRol;
+	protected String nomRol;
+	protected String orientacio;
+	protected String posicionament;
 	
 	public Rol() {
 		codiRol=0;

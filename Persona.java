@@ -1,8 +1,8 @@
 public class Persona {
-    private String nom;
-    private String cognom;
-    private int llicencia_federativa;
-    private Partit partit;
+    protected String nom;
+    protected String cognom;
+    protected int llicencia_federativa;
+    protected Partit partit;
     
     public Persona(){
         nom = "";
@@ -19,4 +19,6 @@ public class Persona {
     public int llicenciaFederativa(){
         return llicencia_federativa;
     }
+
+    public String nom() {return nom;}
 }

@@ -10,15 +10,22 @@ public class Equip {
     private Esquema esquemaDef;
     private Esquema esquemaAtac;
 
-    public Equip(){
+    /*public Equip(){
         this.codi = 0;
         this.nom = "";
         this.nombreJugadors = 12;
-    }
+        Jugadors = new Vector<Jugador>();
+    }*/
     public Equip(int _codi, String _nom, int _nombreJugadors){
         codi = _codi;
         nom = _nom;
         nombreJugadors = _nombreJugadors;
+        Jugadors = null;
+        entrenador = null;
+        amonestacions = 0;
+        partit = null;
+        esquemaDef = null;
+        esquemaAtac = null;
     }
     public int amonestacions(){
         return amonestacions;
@@ -30,11 +37,23 @@ public class Equip {
         if(atac) esquemaAtac = nou;
         else esquemaDef = nou;
     }
+
+    public String nomEquip() {return nom;}
+
     public void donarAlta(Jugador jugador){
         Jugadors.add(jugador);
     }
     public void donarBaixa(Jugador jugador){
         Jugadors.add(jugador);
+    }
+
+    public String nom() {return nom;}
+
+    public void afageixPersonal(Vector<Jugador> _jugadorsP, Vector<Jugador> _jugadorsB, Entrenador e) {
+        entrenador = e;
+        Jugadors = new Vector<Jugador>();
+        Jugadors.addAll(_jugadorsP);
+        Jugadors.addAll(_jugadorsB);
     }
 
     @Override

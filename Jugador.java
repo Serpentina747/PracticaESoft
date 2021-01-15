@@ -18,6 +18,29 @@ public class Jugador extends Persona{
     private boolean pendentArbitre;
     private boolean banqueta;
     private Vector<Instruccio> msgEntrenador;
+    private int exclusions;
+
+    public Jugador(String _nom, String _cognom, int _llicencia_federativa, String _estil, double _alcada, double _pes, Equip _equip, Entrenador _entrenador, Rol _rol, boolean _banqueta){
+        super.nom = _nom;
+        super.cognom = _cognom;
+        super.llicencia_federativa = _llicencia_federativa;
+        estil = _estil;
+        alcada = _alcada;
+        pes = _pes;
+        equip = _equip;
+        velocitat = 0;
+        orientacio = 0;
+        acceleracio = 0;
+        amonestat = 0;
+        rol = _rol;
+        entrenador = _entrenador;
+        nExclusions = 0;
+        veuPilota = false;
+        pendentEntrenador = true;
+        pendentArbitre = true;
+        banqueta = _banqueta;
+        msgEntrenador = new Vector<Instruccio>();
+    }
 
     public void rebreMissatge (Instruccio instruccio) {
 
@@ -55,10 +78,12 @@ public class Jugador extends Persona{
 
     }
 
-    public void canviarRol (Instruccio instruccio) {
+    public void canviarRol (Assignacio assig) {
 
-        rol = instruccio.nouRol();
+        rol = assig.nouRol();
 
     }
+
+    public String nomEquip() {return equip.nomEquip();}
 
 }
