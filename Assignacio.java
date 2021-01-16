@@ -3,6 +3,7 @@ import java.util.*;
 public class Assignacio extends Instruccio{
     private Rol nouRol;
 
+    //brief: Constructor amb paràmetres d'Assignació
     public Assignacio (int codi, Persona e, Vector<Jugador> recept, String miss, String llocReb, char cOv, Rol r)
     {
         super.codiInstruccio = codi;

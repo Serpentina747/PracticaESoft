@@ -19,6 +19,7 @@ public class Jugador extends Persona{
     private Vector<Instruccio> msgEntrenador;
     private int exclusions;
 
+    //brief: Constructor amb paràmetres de Jugador
     public Jugador(String _nom, String _cognom, int _llicencia_federativa, String _estil, double _alcada, double _pes, Equip _equip, Entrenador _entrenador, String descripcio_rol, boolean _banqueta, String atacOdefensa, Partit _partit){
         super.nom = _nom;
         super.cognom = _cognom;
@@ -42,6 +43,7 @@ public class Jugador extends Persona{
         msgEntrenador = new Vector<Instruccio>();
     }
 
+    //brief: Es rep la instrucció instruccio, es guarda al vector d'instruccions i es mostra el missatge que conté
     public void rebreMissatge (Instruccio instruccio) {
 
         msgEntrenador.add(instruccio);
@@ -49,6 +51,7 @@ public class Jugador extends Persona{
 
     }
 
+    //brief: Actualitza l'estat del Jugador per una exclusió
     public int excloure() {
 
         exclusions++;
@@ -56,10 +59,12 @@ public class Jugador extends Persona{
 
     }
 
+
     public int exclosions () {
         return exclusions;
     }
 
+    //brief: Actualitza l'estat del Jugador per anar a jugar a la Pista
     public void enviarPista () {
 
         banqueta = false;
@@ -68,7 +73,8 @@ public class Jugador extends Persona{
         veuPilota = true;
 
     }
-    
+
+    //brief: Actualitza l'estat del Jugador per entrar a la Banqueta
     public void enviarBanqueta () {
 
         banqueta = true;
@@ -78,6 +84,7 @@ public class Jugador extends Persona{
 
     }
 
+    //brief: Assigna el rol que conté la Assignacio assig al Jugador
     public void canviarRol (Assignacio assig) {
 
         rol = assig.nouRol();
@@ -86,6 +93,7 @@ public class Jugador extends Persona{
 
     public String nomEquip() {return equip.nomEquip();}
 
+    //brief: Crea el rol corresponent amb els paràmetres entrats, si els paràmetres són incorrectes retorna null, si són correctes retorna el Rol
     public Rol crearRol(String descripcio_rol, String atacOdefensa){
         if(atacOdefensa.equals("D")){
             if(descripcio_rol.equals("exterior_esquerra")){
@@ -109,6 +117,7 @@ public class Jugador extends Persona{
             } else if (descripcio_rol.equals("porter")){
                 return new Porter("porter", "porter");  
             }
+            else return null;
         }  else if (atacOdefensa.equals("A")){
             if(descripcio_rol.equals("exterior_esquerra")){
                 return new Atacant("exterior", "esquerra");
@@ -131,6 +140,7 @@ public class Jugador extends Persona{
                 return new Atacant("porter", "porter");
                 
             }
+            else return null;
         }
         return null;
     }

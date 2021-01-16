@@ -11,12 +11,8 @@ public class Equip {
     private Esquema esquemaAtac;
     char CoV;
 
-    /*public Equip(){
-        this.codi = 0;
-        this.nom = "";
-        this.nombreJugadors = 12;
-        Jugadors = new Vector<Jugador>();
-    }*/
+
+    //brief: Constructor amb paràmetres de Equip
     public Equip(int _codi, String _nom, int _nombreJugadors, Partit _partit, char cOv){
         codi = _codi;
         nom = _nom;
@@ -29,12 +25,17 @@ public class Equip {
         esquemaAtac = null;
         CoV = cOv;
     }
+
     public int amonestacions(){
         return amonestacions;
     }
+
+    //No sabem que ha de fer ben bé encara!
     public void actualitzar(){
         
     }
+
+    //brief: Canvia l'esquema de l'equip per el nou esquema nou
     public void canviaEsquemaAtac(Esquema nou, boolean atac){     
         if(atac) esquemaAtac = nou;
         else esquemaDef = nou;
@@ -42,15 +43,19 @@ public class Equip {
 
     public String nomEquip() {return nom;}
 
+    //brief: Afageix un jugador a l'equip
     public void donarAlta(Jugador jugador){
         Jugadors.add(jugador);
     }
+    //brief: Treu un jugador de l'equip
     public void donarBaixa(Jugador jugador){
         Jugadors.add(jugador);
     }
 
     public String nom() {return nom;}
     public int nombreJugadors() {return nombreJugadors;}
+
+    //brief: Afageix totes les persones de l'equip: Entrenador(e), Jugadors(pista + banqueta)
     public void afageixPersonal(Vector<Jugador> _jugadorsP, Vector<Jugador> _jugadorsB, Entrenador e) {
         entrenador = e;
         Jugadors = new Vector<Jugador>();

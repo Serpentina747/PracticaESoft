@@ -39,19 +39,12 @@ class Handbol{
                     break;
 
                 case "3":
-                    Jugador jPista = null, jBanqueta = null;
                     Entrenador e = null;
-                    int resEscollirEq = escollirEquipIJugadors(equips, jugadorsEquipLocalPista, jugadorsEquipLocalBanqueta, jugadorsEquipVisitantPista, jugadorsEquipVisitantBanqueta, jPista, jBanqueta, e, ultimaInstruccio);
+                    int resEscollirEq = ferCanvi(equips, partit.jugadorsEquipLocalPista(), partit.jugadorsEquipLocalBanqueta(), partit.jugadorsEquipVisitantPista(), partit.jugadorsEquipVisitantBanqueta(), e, ultimaInstruccio);
                     if (resEscollirEq == -1) System.out.println("No s'ha trobat l'Equip entrat");
                     else if (resEscollirEq == -2) System.out.println("No s'ha trobat el jugador de Pista entrat");
                     else if (resEscollirEq == -3) System.out.println("No s'ha trobat el jugador de Banqueta entrat");
-                    /*else if (resEscollirEq > 0)
-                    {
-                        //FALLA AQUI!!!!
-                        //Diu que jBanqueta = null
-                        System.out.println(jBanqueta);
-                        canviJugadors(jPista, jBanqueta, e, ultimaInstruccio);
-                    }*/
+                    else if(resEscollirEq == 0) System.out.println("Rol introduït inexistent!");
                     break;
                 default:
                     System.out.println("SI ET PLAU, INTRODUEIX UNA OPCIO VALIDA :-)");
@@ -87,10 +80,14 @@ class Handbol{
     }
 
 
-    public static int escollirEquipIJugadors(Vector<Equip> equips, Vector<Jugador> jugadorsEquipLocalPista, Vector<Jugador> jugadorsEquipLocalBanqueta,
-                                              Vector<Jugador> jugadorsEquipVisitantPista, Vector<Jugador> jugadorsEquipVisitantBanqueta, Jugador jPista, Jugador jBanqueta, Entrenador e, int ultimaIns)
+
+    //brief: Es demana l'equip en el qual es farà el canvi, i seguidament el jugador de pista i el jugador de banqueta per intercanviar.
+    //Tot seguit si tot va bé es demana el rol que el nou jugador de pista tindrà.
+    public static int ferCanvi(Vector<Equip> equips, Vector<Jugador> jugadorsEquipLocalPista, Vector<Jugador> jugadorsEquipLocalBanqueta,
+                                             Vector<Jugador> jugadorsEquipVisitantPista, Vector<Jugador> jugadorsEquipVisitantBanqueta, Entrenador e, int ultimaIns)
     {
         Vector<Jugador> pista = null, banqueta = null;
+        Jugador jPista = null, jBanqueta = null;
 
         System.out.println("Introdueixi nom de l'equip per fer el canvi:");
         System.out.println(equips.get(0) + " (Local)");
@@ -131,11 +128,12 @@ class Handbol{
         String descripcio_rol = keyboard.nextLine();
 
         Rol rol = jBanqueta.crearRol(descripcio_rol, AoD);
+        if (rol==null) return 0;
+
         ultimaIns ++;
         Vector<Jugador> receptors = new Vector<Jugador>();
         receptors.add(jBanqueta);
         Assignacio assig = new Assignacio(ultimaIns, e, receptors, "Assignacio rol", null, e.CoV(), rol);
-        //Tractar error
 
         e.assignarRol(assig);
         ultimaIns ++;
@@ -145,32 +143,6 @@ class Handbol{
 
         return 1;
 
-    }
-
-    public static int canviJugadors(Jugador pista, Jugador banqueta, Entrenador e, int ultimaIns)
-    {
-        Scanner keyboard = new Scanner(System.in);
-        System.out.println("Esculli el rol que tindrà el jugador entrant:");
-
-        System.out.print("Introdueixi Atac [A] o Defensa [D]: ");
-        String AoD = keyboard.nextLine();
-        System.out.print("Introdueixi Rol [posicio_orientacio]: ");
-        String descripcio_rol = keyboard.nextLine();
-
-        Rol rol = banqueta.crearRol(descripcio_rol, AoD);
-        ultimaIns ++;
-        Vector<Jugador> receptors = new Vector<Jugador>();
-        receptors.add(banqueta);
-        Assignacio assig = new Assignacio(ultimaIns, e, receptors, "Assignacio rol", null, e.CoV(), rol);
-        //Tractar error
-
-        e.assignarRol(assig);
-        ultimaIns ++;
-
-        Canvi canvi = new Canvi(ultimaIns, e, e.CoV(), pista, banqueta);
-        e.canviarJugador(canvi);
-
-        return 1;
     }
 
 
@@ -212,7 +184,8 @@ class Handbol{
 
 
 
-
+    //brief: Es demana l'equip en el qual s'enviarà el missatge i un cop entrat el missatge a enviar. Envia el missatge als jugadors de la banqueta de l'equip entrat.
+    //Fa control d'errors
     public static int enviarMissatgeJugadorsBanqueta(Scanner sc, Vector<Equip> equips, Vector<Entrenador> entrenadors, Partit partit){
         Entrenador e = null;
         String nomEquip , msg;
@@ -405,6 +378,8 @@ class Handbol{
         }
     }
 
+
+    //brief: Es mostren tots els jugadors que estàn jugant el partit actualment i demana el nom del jugador que s'excourà. Fa comprovacions i si el troba l'exclou.
     public static void excloureJugador (int ultimaInstruccio, Vector<Jugador> local, Vector<Jugador> visitant, Vector<Arbitre> arbits, Partit partit) {
 
         System.out.println("********************Llista de jugadors:********************\n"); // entrar jugador

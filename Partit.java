@@ -7,6 +7,7 @@ public class Partit{
     private Vector<Jugador> _banquetaCasa, _banquetaVisitant, _pistaCasa, _pistaVisitant,
             _jugadorsExclosos, _jugadorsExpulsats;
 
+    //brief: Constructor per defecte de Partit
     public Partit()
     {
         _equipCasa = null;
@@ -22,6 +23,7 @@ public class Partit{
 
     }
 
+    //brief: Constructor amb paràmetres de Partit
     public Partit(Equip eCasa, Equip eVisitant, Arbitre arbitre1, Arbitre arbitre2,
                   Vector<Jugador> banquetaCasa, Vector<Jugador> banquetaVisitant, Vector<Jugador> pistaCasa, Vector<Jugador> pistaVisitant)
     {
@@ -62,6 +64,9 @@ public class Partit{
         }
     }
 
+    //brief: Exclou un jugador de la llista que el conté afegint-lo a la llista d'exclosos i traient-lo de la pista.
+        //   Si el jugador té més de 3 excllusions, l'expulsa cridant expulsaJugador(s)
+    //Retorna 1 si exclou al jugador, 2 si l'expulsa i -1 si no el troba
     public int exclouJugador(Sancio s)
     {
         Vector<Jugador> jPista = null;
@@ -80,7 +85,7 @@ public class Partit{
         
         if (!trobat) return -1;
         else {
-            _jugadorsExpulsats.add(s.jugadorPista());
+            _jugadorsExclosos.add(s.jugadorPista());
             jPista.remove(i);
 
             if (s.jugadorPista().excloure()==3){
@@ -90,6 +95,8 @@ public class Partit{
         }
     }
 
+    //brief: Expulsa un jugador de la llista que el conté afegint-lo a la llista d'expulsats i traient-lo de la pista.
+    //Retorna 1 si exclou al jugador, 2 si l'expulsa i -1 si no el troba
     public int expulsaJugador(Sancio s)
     {
         Vector<Jugador> jPista = null;
@@ -114,40 +121,59 @@ public class Partit{
 
     }
 
+    //brief: Mira on es troba el Jugador j, l'afageix a la pista i el treu de la banqueta
     public void posarJugadorPista(Jugador j)
     {
-        if (j.nomEquip().equals(_equipCasa.nom())) _pistaCasa.add(j);
-        else if (j.nomEquip().equals(_equipVisitant.nom())) _pistaVisitant.add(j);
+        if (j.nomEquip().equals(_equipCasa.nom())) {
+            _pistaCasa.add(j);
+            _banquetaCasa.remove(j);
+            System.out.println("Jugador " + j.nom() + " inserit a Pista");
+        }
+        else if (j.nomEquip().equals(_equipVisitant.nom())) {
+            _pistaVisitant.add(j);
+            _banquetaVisitant.remove(j);
+            System.out.println("Jugador " + j.nom() + " inserit a Pista");
+        }
         else {System.out.println("Error, jugador no inserit a pista!");}
 
-        System.out.println("Jugador " + j.nom() + " inserit a Pista");
-
     }
 
+    //brief: Mira on es troba el Jugador j, l'afageix a la banqueta i el treu de la pista
     public void posarJugadorBanqueta(Jugador j)
     {
-        if (j.nomEquip().equals(_equipCasa.nom())) _banquetaCasa.add(j);
-        else if (j.nomEquip().equals(_equipVisitant.nom())) _banquetaVisitant.add(j);
+        if (j.nomEquip().equals(_equipCasa.nom())) {
+            _banquetaCasa.add(j);
+            _pistaCasa.remove(j);
+            System.out.println("Jugador " + j.nom() + " inserit a Banqueta");
+        }
+        else if (j.nomEquip().equals(_equipVisitant.nom())) {
+            _banquetaVisitant.add(j);
+            _pistaVisitant.remove(j);
+            System.out.println("Jugador " + j.nom() + " inserit a Banqueta");
+        }
         else {System.out.println("Error, jugador no inserit a banqueta!");}
 
-        System.out.println("Jugador " + j.nom() + " inserit a Banqueta");
     }
 
+    //brief: Assigna el rol que conté assig a tots els jugadors que s'ha de canviar
     public void assignarRolJugador(Assignacio assig)
     {
         for (Jugador j: assig.receptors()) j.canviarRol(assig);
     }
 
+    //brief: S'afageixen els Equips al partit
     public void entrarEquips(Equip local, Equip visitant){
         _equipCasa = local;
         _equipVisitant = visitant;
     }
 
+    //brief: S'afageixen els àrbitres al partit
     public void entrarArbitres(Arbitre arbitre_1, Arbitre arbitre_2){
         _arbitre1 = arbitre_1;
         _arbitre2 = arbitre_2;
     }
 
+    //brief: S'afageixen els jugadors al partit als seus corresponents vectors
     public void entrarJugadors(Vector<Jugador> jugadors, String pistaObanqueta, String localOvisitant){
         if(pistaObanqueta.equals("banqueta")){
             if(localOvisitant.equals("local")){
