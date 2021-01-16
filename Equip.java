@@ -9,6 +9,7 @@ public class Equip {
     private int amonestacions;
     private Esquema esquemaDef;
     private Esquema esquemaAtac;
+    char CoV;
 
     /*public Equip(){
         this.codi = 0;
@@ -16,7 +17,7 @@ public class Equip {
         this.nombreJugadors = 12;
         Jugadors = new Vector<Jugador>();
     }*/
-    public Equip(int _codi, String _nom, int _nombreJugadors, Partit _partit){
+    public Equip(int _codi, String _nom, int _nombreJugadors, Partit _partit, char cOv){
         codi = _codi;
         nom = _nom;
         nombreJugadors = _nombreJugadors;
@@ -26,6 +27,7 @@ public class Equip {
         partit = _partit;
         esquemaDef = null;
         esquemaAtac = null;
+        CoV = cOv;
     }
     public int amonestacions(){
         return amonestacions;
@@ -56,6 +58,8 @@ public class Equip {
         Jugadors.addAll(_jugadorsB);
         nombreJugadors = _jugadorsP.size() + _jugadorsB.size();
     }
+
+    public Entrenador entrenador() {return entrenador;}
     @Override
     public String toString(){
         return " CODI EQUIP: " + String.valueOf(codi) + " NOM: " + nom + " ";

@@ -118,12 +118,19 @@ public class Partit{
     {
         if (j.nomEquip().equals(_equipCasa.nom())) _pistaCasa.add(j);
         else if (j.nomEquip().equals(_equipVisitant.nom())) _pistaVisitant.add(j);
+        else {System.out.println("Error, jugador no inserit a pista!");}
+
+        System.out.println("Jugador " + j.nom() + " inserit a Pista");
+
     }
 
     public void posarJugadorBanqueta(Jugador j)
     {
         if (j.nomEquip().equals(_equipCasa.nom())) _banquetaCasa.add(j);
         else if (j.nomEquip().equals(_equipVisitant.nom())) _banquetaVisitant.add(j);
+        else {System.out.println("Error, jugador no inserit a banqueta!");}
+
+        System.out.println("Jugador " + j.nom() + " inserit a Banqueta");
     }
 
     public void assignarRolJugador(Assignacio assig)

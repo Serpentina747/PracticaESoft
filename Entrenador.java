@@ -3,8 +3,9 @@ public class Entrenador extends Persona{
     private boolean pendentArbitre;
     private Equip equip;
     private Vector<Instruccio> instruccions;
+    private char CoV;
 
-	public Entrenador(String _nom, String _cognom, int _llicencia_federativa, Equip eq, Partit _partit) {
+	public Entrenador(String _nom, String _cognom, int _llicencia_federativa, Equip eq, Partit _partit, char cOv) {
       super.nom = _nom;
       super.cognom = _cognom;
       super.llicencia_federativa = _llicencia_federativa;
@@ -12,10 +13,13 @@ public class Entrenador extends Persona{
       equip=eq;
       instruccions = new Vector<Instruccio>();
       pendentArbitre=false;
+      CoV = cOv;
 	  }
     public void canviarJugador(Canvi canv){
-		  super.partit.posarJugadorPista(canv.jugadorPista());
-		  super.partit.posarJugadorBanqueta(canv.jugadorBanqueta());
+	      canv.jugadorBanqueta().enviarPista();
+		  super.partit.posarJugadorPista(canv.jugadorBanqueta());
+		  canv.jugadorPista().enviarBanqueta();
+		  super.partit.posarJugadorBanqueta(canv.jugadorPista());
 		  instruccions.add(canv);
     }
     public void rebreInstruccio(Instruccio instr){
@@ -37,6 +41,7 @@ public class Entrenador extends Persona{
     public boolean pendentArbitre(){
         return pendentArbitre;
     }
+    public char CoV() {return CoV;}
     @Override
     public String toString(){
       return " NOM: " + super.nom + " COGNOM: " + super.cognom + " LLICENCIA FEDERATIVA: " + super.llicencia_federativa + " EQUIP: " + equip + " ";
