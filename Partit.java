@@ -77,11 +77,16 @@ public class Partit{
             }
             else i++;
         }
+        
         if (!trobat) return -1;
         else {
             _jugadorsExpulsats.add(s.jugadorPista());
             jPista.remove(i);
-            return 1;
+
+            if (s.jugadorPista().excloure()==3){
+                expulsaJugador (s);
+                return 2;
+            } else return 1;
         }
     }
 
@@ -103,6 +108,7 @@ public class Partit{
         else {
             _jugadorsExpulsats.add(s.jugadorPista());
             jPista.remove(i);
+            _jugadorsExclosos.remove(s.jugadorPista());
             return 1;
         }
 
