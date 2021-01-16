@@ -19,6 +19,7 @@ public class Arbitre extends Persona{
 		partit.exclouJugador(sans);
 		instruccions.add(sans);
 	}
+	//brief: mètode toString de la classe Arbitre.
 	@Override
 	public String toString(){
 		return " NOM: " + super.nom + " COGNON: " + super.cognom + " LLICENCIA FEDERATIVA: " + super.llicencia_federativa + " ";

@@ -59,7 +59,7 @@ public class Jugador extends Persona{
 
     }
 
-
+    //brief: retorna les exclusions que té el jugador.
     public int exclosions () {
         return exclusions;
     }
@@ -74,7 +74,7 @@ public class Jugador extends Persona{
 
     }
 
-    //brief: Actualitza l'estat del Jugador per entrar a la Banqueta
+    // brief: Actualitza l'estat del Jugador per entrar a la Banqueta
     public void enviarBanqueta () {
 
         banqueta = true;
@@ -84,13 +84,14 @@ public class Jugador extends Persona{
 
     }
 
-    //brief: Assigna el rol que conté la Assignacio assig al Jugador
+    // brief: Assigna el rol que conté la Assignacio assig al Jugador
     public void canviarRol (Assignacio assig) {
 
         rol = assig.nouRol();
 
     }
 
+    // brief: retorna el nom de l'equip al qual pertany el jugador.
     public String nomEquip() {return equip.nomEquip();}
 
     //brief: Crea el rol corresponent amb els paràmetres entrats, si els paràmetres són incorrectes retorna null, si són correctes retorna el Rol
@@ -144,6 +145,7 @@ public class Jugador extends Persona{
         }
         return null;
     }
+    // Mètode toString.
     @Override public String toString(){
         String a = "";
         if(banqueta) {a = "banqueta";}

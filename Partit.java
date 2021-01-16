@@ -190,27 +190,35 @@ public class Partit{
         }
     }
 
+    // brief: retorna l'estructura corresponent als jugadors de l'equip local que es troben a la banqueta.
     public Vector<Jugador> jugadorsEquipLocalBanqueta(){
         return _banquetaCasa;
     }
+    // brief: retorna l'estructura corresponent als jugadors de l'equip local que es troben a la pista.
     public Vector<Jugador> jugadorsEquipLocalPista(){
         return _pistaCasa;
     }
+    // brief: retorna l'estructura corresponent als jugadors de l'equip visitant que es troben a la banqueta.
     public Vector<Jugador> jugadorsEquipVisitantBanqueta(){
         return _banquetaVisitant;
     }
+    // brief: retorna l'estructura corresponent als jugadors de l'equip visitant que es troben a la pista.
     public Vector<Jugador> jugadorsEquipVisitantPista(){
         return _pistaVisitant;
     }
+    // brief: retorna l'equip que representa l'equip local.
     public Equip equipLocal(){
         return _equipCasa;
     }
+    // brief: retorna l'equip que representa l'equip visitant.
     public Equip equipVisitant(){
         return _equipVisitant;
     }
+    // brief: retorna l'àrbitre 1.
     public Arbitre arbitre1(){
         return _arbitre1;
     }
+    // brief: retorna l'àrbitre 2.
     public Arbitre arbitre2(){
         return _arbitre2;
     }

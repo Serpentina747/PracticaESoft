@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.util.*;  
 class Handbol{
 
+    // brief: programa principal.
     public static void main(String args[]){
         Partit partit = new Partit();
         Vector<Equip> equips = new Vector<Equip>();
@@ -60,7 +61,7 @@ class Handbol{
 
 
 
-
+    // brief: es mostra el menú d'opcions a través de la pantalla.
     public static void mostrarOpcions(){
         System.out.println("+--------------------------------------------------+");
         System.out.println("| (1) ENVIAR MISSATGE ALS JUGADORS DE LA BANQUETA  |");
@@ -73,7 +74,7 @@ class Handbol{
 
 
 
-
+    // brief: es llegeix la opció triada per l'usuari.
     public static String rebreOpcio(Scanner sc){
         String t  = sc.nextLine();
         return t;
@@ -145,7 +146,8 @@ class Handbol{
 
     }
 
-
+    //brief: Es llegeix les dades d'un fitxer de text que conté la informació sobre els equips, els àrbitres, els entrenadors
+    // i els jugadors. S'omplen les estructures corresponents i s'inicialitza cada classe.
     public static void llegirDades(Vector<Equip> equips, Vector<Jugador> jugadorsEquipLocalPista, Vector<Jugador> jugadorsEquipLocalBanqueta,
                     Vector<Jugador> jugadorsEquipVisitantPista, Vector<Jugador> jugadorsEquipVisitantBanqueta, Vector<Arbitre> arbitres,
                         Vector<Entrenador> entrenadors, Partit partit){
@@ -211,7 +213,7 @@ class Handbol{
 
 
 
-
+    // brief: es llegeixen els equips del fitxer de text.
     public static void llegirEquips(Vector<Equip> equips, Scanner myReader, Partit partit){
         int i = 0;
         String nomEquip = "";
@@ -245,7 +247,7 @@ class Handbol{
 
 
 
-
+    // brief: es llegeixen els àrbitres del fitxer de text.
     public static void llegirArbitres(Vector<Arbitre> arbitres, Scanner myReader, Partit partit){
         int i = 0;
         String nom = "";
@@ -282,7 +284,7 @@ class Handbol{
 
 
 
-
+    // brief: es llegeixen els entrenadors del fitxer de text.
     public static void llegirEntrenadors(Vector<Entrenador> entrenadors, Scanner myReader, Equip local, Equip visitant, Partit partit){
         int i = 0;
         int aux = 0;
@@ -327,7 +329,7 @@ class Handbol{
 
 
 
-
+    // brief: es llegeixen els jugadors del fitxer de text.
     public static void llegirJugadors(Vector<Jugador> jugadors, Scanner myReader, boolean banqueta, Entrenador entrenador, Equip equip, String atacODefensa, Partit partit){
         int i = 0;
         String nom="", cognom="", codi="", estil="", alcada="", pes="", descripcio_rol = "";
@@ -457,7 +459,7 @@ class Handbol{
         }
 
     }
-
+    // brief: es mostren els jugadors.
     private static void mostrarJugadors(Vector<Jugador> jugadors) {
 
         for (int i=0; i<jugadors.size(); i++) {
@@ -465,7 +467,7 @@ class Handbol{
         }
     
      }
-
+    // brief: es mostren els àrbitres.
      private static void mostrarArbits(Vector<Arbitre> arbits) {
         for (int i=0; i<arbits.size(); i++) {
             System.out.println("    -> " + arbits.get(i) + "\n");

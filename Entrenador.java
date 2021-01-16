@@ -6,7 +6,7 @@ public class Entrenador extends Persona{
     private char CoV;
 
     //brief: Constructor amb paràmetres d'Entrenador
-	public Entrenador(String _nom, String _cognom, int _llicencia_federativa, Equip eq, Partit _partit, char cOv) {
+	  public Entrenador(String _nom, String _cognom, int _llicencia_federativa, Equip eq, Partit _partit, char cOv) {
       super.nom = _nom;
       super.cognom = _cognom;
       super.llicencia_federativa = _llicencia_federativa;
@@ -43,16 +43,18 @@ public class Entrenador extends Persona{
 		  else System.out.println("MISSATGE TRANSMES");
 		  instruccions.add(instr);
     }
+    // brief: retorna l'equip al qual pertany l'entrenador.
     public Equip equip(){
       return equip;
     }
-
+    // brief: retorna si l'entrenador està pendent, (true) o no (false) de l'àrbitre.
     public boolean pendentArbitre(){
         return pendentArbitre;
     }
-
+    // brief: retorna si l'entranador entrena l'equip de casa o bé el visitant.
     public char CoV() {return CoV;}
 
+    // brief: mètode toString.
     @Override
     public String toString(){
       return " NOM: " + super.nom + " COGNOM: " + super.cognom + " LLICENCIA FEDERATIVA: " + super.llicencia_federativa + " EQUIP: " + equip + " ";

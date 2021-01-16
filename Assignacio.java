@@ -3,7 +3,7 @@ import java.util.*;
 public class Assignacio extends Instruccio{
     private Rol nouRol;
 
-    //brief: Constructor amb paràmetres d'Assignació
+    //brief: Constructor amb paràmetres d'Assignació.
     public Assignacio (int codi, Persona e, Vector<Jugador> recept, String miss, String llocReb, char cOv, Rol r)
     {
         super.codiInstruccio = codi;
@@ -14,6 +14,7 @@ public class Assignacio extends Instruccio{
         super.CoV = cOv;
         nouRol = r;
     }
+    //brief: retorna el nou Rol que s'assigna al jugador.
     public Rol nouRol(){
         return nouRol;
     }

@@ -12,7 +12,7 @@ public class Equip {
     char CoV;
 
 
-    //brief: Constructor amb paràmetres de Equip
+    //brief: Constructor amb paràmetres d'Equip.
     public Equip(int _codi, String _nom, int _nombreJugadors, Partit _partit, char cOv){
         codi = _codi;
         nom = _nom;
@@ -26,6 +26,7 @@ public class Equip {
         CoV = cOv;
     }
 
+    //brief: retorna un enter que representa el nombre d'amonestacions de l'equip.
     public int amonestacions(){
         return amonestacions;
     }
@@ -40,7 +41,7 @@ public class Equip {
         if(atac) esquemaAtac = nou;
         else esquemaDef = nou;
     }
-
+    //brief: retorna una cadena de caràcter amb el nom de l'equip.
     public String nomEquip() {return nom;}
 
     //brief: Afageix un jugador a l'equip
@@ -51,8 +52,7 @@ public class Equip {
     public void donarBaixa(Jugador jugador){
         Jugadors.add(jugador);
     }
-
-    public String nom() {return nom;}
+    //brief: retorna un enter amb el nombre de jugadors de l'equip.
     public int nombreJugadors() {return nombreJugadors;}
 
     //brief: Afageix totes les persones de l'equip: Entrenador(e), Jugadors(pista + banqueta)
@@ -64,7 +64,11 @@ public class Equip {
         nombreJugadors = _jugadorsP.size() + _jugadorsB.size();
     }
 
+    //brief: retorna una cadena de caràcter amb el nom de l'equip.
+    public String nom() {return nom;}
+    //brief: retorna l'entrenador de l'equip.
     public Entrenador entrenador() {return entrenador;}
+    //brief: mètode toString de l'equip.
     @Override
     public String toString(){
         return " CODI EQUIP: " + String.valueOf(codi) + " NOM: " + nom + " ";
