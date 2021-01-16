@@ -15,7 +15,9 @@ class Handbol{
         Vector<Jugador> jugadorsEquipVisitantBanqueta = new Vector<Jugador>();
         Vector<Arbitre> arbitres = new Vector<Arbitre>();
         Vector<Entrenador> entrenadors = new Vector<Entrenador>();
+        int ultimaInstruccio;
 
+        ultimaInstruccio = 0;
         String pet;
         Scanner sc = new Scanner(System.in);
         System.out.println("APLICACIO DEL PARTIT D'HANDBOL");
@@ -33,6 +35,7 @@ class Handbol{
                     break;
             
                 case "2":
+                    excloureJugador (ultimaInstruccio, jugadorsEquipLocalPista, jugadorsEquipVisitantPista, arbitres, partit);
                     break;
 
                 case "3":
@@ -302,4 +305,96 @@ class Handbol{
             }
         }
     }
+
+    public static void excloureJugador (int ultimaInstruccio, Vector<Jugador> local, Vector<Jugador> visitant, Vector<Arbitre> arbits, Partit partit) {
+
+        System.out.println("********************Llista de jugadors:********************\n"); // entrar jugador
+        
+        System.out.println("   - Equip local:\n");
+        mostrarJugadors(local);
+
+        System.out.println("   - Equip visitant:\n");
+        mostrarJugadors(visitant);
+        
+        System.out.println("Indica el nom del jugador"); // entrar jugador
+
+        Scanner keyboard = new Scanner(System.in);
+        String nom = keyboard.nextLine();
+        
+        boolean trobat = false;
+        int pos = 0;
+
+        Jugador j = null;
+        char cOv = ' ';
+
+        while (!trobat && pos<local.size()){
+            if (local.get(pos).nom().compareTo(nom)==0) trobat = true;
+            else pos++;
+        }
+
+        if (!trobat) {
+            pos = 0;
+            while (!trobat && pos<visitant.size()){
+                if (visitant.get(pos).nom().compareTo(nom)==0) trobat = true;
+                else pos++;
+            }
+        } else {
+            j = local.get(pos);
+            cOv = 'C';
+        }
+
+        if (!trobat) System.out.println ("Error: Jugador innexistent\n");
+        else {
+
+            mostrarArbits(arbits);
+            String nomArbit = keyboard.nextLine();
+
+            boolean trobatArbit = false;
+            int i = 0;
+
+            Arbitre a;
+
+            while (!trobat && i<arbits.size()){
+                if (arbits.get(i).nom().compareTo(nomArbit)==0) trobat = true;
+                else pos++;
+            }
+            
+            if (!trobatArbit) {
+                System.out.println("Error: Arbitre no existent\n");
+            } else {
+                a = arbits.get(i);
+
+                if (cOv==' '){
+                    cOv = 'V';
+                    j = visitant.get(pos);
+                }
+
+                ultimaInstruccio++;
+                Sancio instr = null;
+                instr = new Sancio (ultimaInstruccio, a, cOv, j, "E");
+
+                int res = partit.exclouJugador(instr);
+                if (res == -1) {
+                    System.out.println("Error: No s'ha pogut excloure al jugador del partit.\n");
+                } else if (res == 1) System.out.println("El jugador ha estat exclos\n");
+                else System.out.println ("El jugador ha estat exclos i expulsat.\n");
+            }
+        }
+
+    }
+
+    private static void mostrarJugadors(Vector<Jugador> jugadors) {
+
+        for (int i=0; i<jugadors.size(); i++) {
+            System.out.println("    -> " + jugadors.get(i) + "\n");
+        }
+    
+     }
+
+     private static void mostrarArbits(Vector<Arbitre> arbits) {
+        for (int i=0; i<arbits.size(); i++) {
+            System.out.println("    -> " + arbits.get(i) + "\n");
+        }
+     }
+
  }
