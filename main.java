@@ -410,10 +410,10 @@ class Handbol{
         System.out.println("********************Llista de jugadors:********************\n"); // entrar jugador
         
         System.out.println("   - Equip local:\n");
-        mostrarJugadors(local);
+        mostrarJugadors(partit.jugadorsEquipLocalPista());
 
         System.out.println("   - Equip visitant:\n");
-        mostrarJugadors(visitant);
+        mostrarJugadors(partit.jugadorsEquipVisitantPista());
         
         System.out.println("Indica el nom del jugador"); // entrar jugador
 
@@ -426,15 +426,15 @@ class Handbol{
         Jugador j = null;
         char cOv = ' ';
 
-        while (!trobat && pos<local.size()){
-            if (local.get(pos).nom().compareTo(nom)==0) trobat = true;
+        while (!trobat && pos<partit.jugadorsEquipLocalPista().size()){
+            if (partit.jugadorsEquipLocalPista().get(pos).nom().compareTo(nom)==0) trobat = true;
             else pos++;
         }
 
         if (!trobat) {
             pos = 0;
-            while (!trobat && pos<visitant.size()){
-                if (visitant.get(pos).nom().compareTo(nom)==0) trobat = true;
+            while (!trobat && pos<partit.jugadorsEquipVisitantPista().size()){
+                if (partit.jugadorsEquipVisitantPista().get(pos).nom().compareTo(nom)==0) trobat = true;
                 else pos++;
             }
         } else {
@@ -446,7 +446,7 @@ class Handbol{
         else {
 
             mostrarArbits(arbits);
-            System.out.print("Introdueixi nom de l'Àrbitre que realitzarà l'exclusió: ");
+            System.out.print("Introdueixi nom de l'Arbitre que realitzarà l'exclusio: \n");
             String nomArbit = keyboard.nextLine();
 
             boolean trobatArbit = false;
